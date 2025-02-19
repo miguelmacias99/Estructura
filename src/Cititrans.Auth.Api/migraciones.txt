@@ -1,0 +1,9 @@
+-- Crear migracion
+dotnet ef migrations add InitialCreate --project Cititrans.Auth.RepositorioEfCore/Cititrans.Auth.RepositorioEfCore.csproj --startup-project Cititrans.Auth.Api/Cititrans.Auth.Api.csproj --output-dir Migrations
+
+-- Ejecutar migracion migracion por nombre
+dotnet ef database update --project Cititrans.Auth.RepositorioEfCore/Cititrans.Auth.RepositorioEfCore.csproj --startup-project Cititrans.Auth.Api/Cititrans.Auth.Api.csproj
+
+-- Eliminar ultima migracion aplicada
+dotnet ef migrations remove --project Cititrans.Auth.RepositorioEfCore/Cititrans.Auth.RepositorioEfCore.csproj --startup-project Cititrans.Auth.Api/Cititrans.Auth.Api.csproj
+
