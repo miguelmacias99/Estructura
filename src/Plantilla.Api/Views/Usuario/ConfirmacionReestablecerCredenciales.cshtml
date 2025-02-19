@@ -1,0 +1,33 @@
+@using Plantilla.Dto.Modelo.Identity.Usuario
+@model ClaveReestablecidaUsuarioDto
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credenciales Reestablecidas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg border-0 rounded">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Credenciales Reestablecidas</h3>
+            </div>
+            <div class="card-body">
+                <p>Hola,</p>
+                <p>Tus credenciales han sido restablecidas con éxito. Para iniciar sesión, usa la siguiente contraseña temporal:</p>
+
+                <div class="alert alert-warning text-center">
+                    <strong>@Model.CredencialTemporal</strong>
+                </div>
+
+                <p>Te recomendamos cambiar tu contraseña una vez que inicies sesión.</p>
+            </div>
+            <div class="card-footer text-muted text-center">
+                Si no solicitaste este cambio, por favor contacta con el soporte.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

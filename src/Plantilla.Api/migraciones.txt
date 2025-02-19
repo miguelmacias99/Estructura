@@ -1,0 +1,9 @@
+-- Crear migracion
+dotnet ef migrations add InitialCreate --project Plantilla.RepositorioEfCore/Plantilla.RepositorioEfCore.csproj --startup-project Plantilla.Api/Plantilla.Api.csproj --output-dir Migrations
+
+-- Ejecutar migracion migracion por nombre
+dotnet ef database update --project Plantilla.RepositorioEfCore/Plantilla.RepositorioEfCore.csproj --startup-project Plantilla.Api/Plantilla.Api.csproj
+
+-- Eliminar ultima migracion aplicada
+dotnet ef migrations remove --project Plantilla.RepositorioEfCore/Plantilla.RepositorioEfCore.csproj --startup-project Plantilla.Api/Plantilla.Api.csproj
+
