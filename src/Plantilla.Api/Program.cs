@@ -39,6 +39,7 @@ builder.Services.ConfigurarNegocio();
 
 var app = builder.Build();
 
+await app.EjecutarMigracionAlIniciar();
 await app.EjecutarCargaInicial();
 
 // Configure the HTTP request pipeline.

@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Events;
 using StackExchange.Redis;
+using Microsoft.EntityFrameworkCore;
 
 namespace Plantilla.Api.Extensiones
 {
@@ -163,7 +164,21 @@ namespace Plantilla.Api.Extensiones
             var services = scope.ServiceProvider;
             await IdentitySeeder.SeedUsersAndRolesAsync(services);
         }
-
+        public static async Task EjecutarMigracionAlIniciar(this WebApplication app)
+        {
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            try
+            {
+                var context = services.GetRequiredService<CititransDbContext>();
+                await context.Database.MigrateAsync(); // Aplica las migraciones pendientes
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "Error al aplicar migraciones de la base de datos.");
+            }
+        }
         public static IServiceCollection ConfigurarClasesDesdeAppSetting(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<ConfiguracionSmtp>(configuration.GetSection("ConfiguracionSmtp"));
